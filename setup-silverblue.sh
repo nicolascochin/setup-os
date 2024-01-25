@@ -17,6 +17,9 @@ echo "Packages installed."
 ## InitramFS
 ! rpm-ostree status -b | grep -q "Initramfs: regenerate" && (echo "Enable initramfs..." && rpm-ostree initramfs --enable 2> /dev/null && reboot) || echo "Initramfs already enabled"
 
+# Github
+gh auth status 2>&1 | grep -q "not logged into"  && echo "Login to Github" && gh auth login
+
 ## Flatpak
 declare -A APPS=(
   ["com.protonvpn.www"]="Proton VPN"
