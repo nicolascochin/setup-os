@@ -32,7 +32,7 @@ declare -A APPS=(
 )
 for KEY in "${!APPS[@]}"; do 
   NAME="${APPS[$KEY]}"
-  ! flatpak list | grep -q $KEY && (echo "Install $NAME" && flatpak install $KEY) || echo "$NAME already installed"
+  ! flatpak list | grep -q $KEY && (echo "Install $NAME" && flatpak install -y $KEY) || echo "$NAME already installed"
 done
 
 ## Autorun
