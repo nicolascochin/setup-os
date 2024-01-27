@@ -4,12 +4,20 @@
 # $2: name of the distrobox
 
 IMAGE=$(test -z $1 && echo "fedora" || echo $1)
+DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
 
-declare -A PACKAGES=(
-  ["fedora"]="zsh gh neovim bat fzf jq git tmux tmate"
-)
+if curl --output /dev/null --silent --head --fail "$DISTRO_SCRIPT_URL"; then
+  echo "URL exists: $url"
+else
+  echo "URL does not exist: $url"
+fi
 
-PACKAGES_TO_INSTALL=$(! [ "${PACKAGES[$IMAGE]+foo}"  ] && echo "" || echo "${PACKAGES[$IMAGE]}")
+
+#declare -A PACKAGES=(
+#  ["fedora"]="zsh gh neovim bat fzf jq git tmux tmate"
+#)
+
+#PACKAGES_TO_INSTALL=$(! [ "${PACKAGES[$IMAGE]+foo}"  ] && echo "" || echo "${PACKAGES[$IMAGE]}")
 #PACKAGES_TO_INSTALL=$(! [ "${PACKAGES[$IMAGE]+foo}"  ] && echo "Image '$IMAGE' is unknown. Exiting..." && exit 1)
 
 echo "Installing distrobox with image: $IMAGE"
