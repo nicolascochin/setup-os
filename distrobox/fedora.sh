@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-PACKAGES_TO_INSTALL=(
+PACKAGES=(
   foo
   bar #dummy
   foobar
