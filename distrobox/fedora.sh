@@ -1,9 +1,15 @@
 #!/bin/bash 
 
 PACKAGES=(
-  foo
-  bar #dummy
-  foobar
+  zsh 
+  gh 
+  neovim 
+  bat 
+  fzf 
+  jq 
+  git 
+  tmux 
+  tmate
 )
 
 # $1: name of the distrobox
