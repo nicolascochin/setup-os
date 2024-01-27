@@ -7,9 +7,7 @@ IMAGE=$(test -z $1 && echo "fedora" || echo $1)
 DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
 
 if curl --output /dev/null --silent --head --fail "$DISTRO_SCRIPT_URL"; then
-  echo "URL exists: $url"
-else
-  echo "URL does not exist: $url"
+  source <(curl -s "$DISTRO_SCRIPT_URL")
 fi
 
 
@@ -22,6 +20,8 @@ fi
 
 echo "Installing distrobox with image: $IMAGE"
 echo "Packages: >${PACKAGES_TO_INSTALL}<"
+
+custom_install "foo"
 exit
 CUSTOM_HOME=$HOME/Distroboxes/$IMAGE
 
