@@ -62,7 +62,7 @@ for FONT_NAME in "${!FONTS[@]}"; do
 done
 
 ## Gnome Terminal
-dconf load /org/gnome/terminal/legacy/profiles:/ (curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/config/gnome-terminal-profiles.dconf)
+curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/config/gnome-terminal-profiles.dconf -o /tmp/gnome.dconf && dconf load /org/gnome/terminal/legacy/profiles:/ < /tmp/gnome.dconf
 
 echo "Gnome extensions to install"
 echo https://extensions.gnome.org/extension/615/appindicator-support/
