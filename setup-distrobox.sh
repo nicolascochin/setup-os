@@ -5,6 +5,7 @@
 
 IMAGE=$(test -z $1 && echo "fedora" || echo $1)
 NAME=$(test -z $2 && echo "$IMAGE" || echo $2)
+VERSION=latest
 DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
 
 ## Functions
@@ -40,7 +41,8 @@ echo "Packages: >${PACKAGES_TO_INSTALL}<"
 ! do_we_continue && echo "Exiting..." && exit 1
 
 distrobox create  \
-  --image $IMAGE \
+  --image $IMAGE:$VERSION \
+  --name $NAME
   --additional-packages "$PACKAGES_TO_INSTALL"
 
 distrobox enter $IMAGE -- chsh -s /bin/zsh
