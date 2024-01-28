@@ -61,8 +61,7 @@ check_not_installed "oh-my-zsh plugin zsh-syntax-highlighting" "test -d ${HIGHLI
 ############################
 FAST_SYNTAXT_HIGHLIGHTING_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
 check_not_installed "oh-my-zsh plugin fast syntaxt hightlighting" "test -d ${FAST_SYNTAXT_HIGHLIGHTING_DIR}" && (
-  git clone -q https://github.com/zsh-users/zsh-autosuggestions ${FAST_SYNTAXT_HIGHLIGHTING_DIR}
-  git clone https://github.com/z-shell/F-Sy-H.git 
+  git clone -q https://github.com/z-shell/F-Sy-H.git ${FAST_SYNTAXT_HIGHLIGHTING_DIR}
 )
 
 
