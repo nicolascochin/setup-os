@@ -42,7 +42,7 @@ echo "Packages: >${PACKAGES_TO_INSTALL}<"
 
 distrobox create  \
   --image $IMAGE:$VERSION \
-  --name $NAME
+  --name $NAME \
   --additional-packages "$PACKAGES_TO_INSTALL"
 
 distrobox enter $IMAGE -- chsh -s /bin/zsh
