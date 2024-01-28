@@ -58,7 +58,7 @@ declare -A FONTS=(
 for FONT_NAME in "${!FONTS[@]}"; do 
   FONT_URL="${FONTS[$FONT_NAME]}"
   echo "install font $FONT_NAME"
-  curl -fsSL ${FONT_URL}-o "${FONT_DIR}/${FONT_NAME}"
+  curl -fsSL ${FONT_URL} -o "${FONT_DIR}/${FONT_NAME}"
 done
 
 echo "Gnome extensions to install"
