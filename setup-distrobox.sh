@@ -37,7 +37,7 @@ PACKAGES_TO_INSTALL=${PACKAGES[@]:-""}
 echo "Installing distrobox with name: $NAME"
 echo "Installing distrobox with image: $IMAGE"
 echo "Packages: >${PACKAGES_TO_INSTALL}<"
-! do_we_continue && echo "Exiting..." && echo 1
+! do_we_continue && echo "Exiting..." && exit 1
 
 distrobox create  \
   --image $IMAGE \
