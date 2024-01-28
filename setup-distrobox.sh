@@ -45,6 +45,6 @@ distrobox create  \
   --name $NAME \
   --additional-packages "$PACKAGES_TO_INSTALL"
 
-distrobox enter $IMAGE -- chsh -s /bin/zsh
+distrobox enter $NAME -- chsh -s /bin/zsh
 fn_exists custom_install && custom_install "$NAME"
-distrobox enter $IMAGE
+distrobox enter $NAME
