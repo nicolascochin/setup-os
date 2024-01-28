@@ -56,6 +56,15 @@ check_not_installed "oh-my-zsh plugin zsh-syntax-highlighting" "test -d ${HIGHLI
   git clone -q https://github.com/dracula/zsh-syntax-highlighting.git ${DRACULA_DIR}
 )
 
+##########
+# ANYENV #
+##########
+ANYENV_DIR=${HOME}/.anyenv
+check_not_installed anyenv "test -d ${ANYENV_DIR}" && (
+  git clone -q https://github.com/anyenv/anyenv ${ANYENV_DIR}
+  ${ANYENV_DIR}/bin/anyenv install --force-init
+)
+
 #######
 # FIG #
 #######
