@@ -10,6 +10,7 @@ PACKAGES=(
   git 
   tmux 
   tmate
+  figlet
 )
 
 # $1: name of the distrobox
