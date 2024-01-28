@@ -46,6 +46,21 @@ for APP in "${AUTO_APPS[@]}"; do
   ! test -f ${AUTORUN_DIR}/${APP} && echo "Autostart $APP" && ln -s ${FLATPAK_DIR}/${APP} ${AUTORUN_DIR}/${APP}
 done
 
+## Fonts
+FONT_DIR=${HOME}/.local/share/fonts
+mkdir -p $FONT_DIR
+declare -A FONTS=(
+  ["MesloLGS NF Regular.ttf"]="https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.tt"
+  ["MesloLGS NF Bold.ttf"]="https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
+  ["MesloLGS NF Italic.ttf"]="https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
+  ["MesloLGS NF Bold Italic.ttf"]="https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+)
+for FONT_NAME in "${!FONTS[@]}"; do 
+  FONT_URL="${FONTS[$FONT_NAME]}"
+  echo "install font $FONT_NAME"
+  curl -fsSL ${FONT_URL}-o "${FONT_DIR}/${FONT_NAME}"
+done
+
 echo "Gnome extensions to install"
 echo https://extensions.gnome.org/extension/615/appindicator-support/
 echo https://extensions.gnome.org/extension/779/clipboard-indicator/
