@@ -61,6 +61,9 @@ for FONT_NAME in "${!FONTS[@]}"; do
   curl -fsSL ${FONT_URL} -o "${FONT_DIR}/${FONT_NAME}"
 done
 
+## Gnome Terminal
+dconf load /org/gnome/terminal/legacy/profiles:/ (curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/config/gnome-terminal-profiles.dconf)
+
 echo "Gnome extensions to install"
 echo https://extensions.gnome.org/extension/615/appindicator-support/
 echo https://extensions.gnome.org/extension/779/clipboard-indicator/
