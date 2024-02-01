@@ -9,6 +9,7 @@ PACKAGES_TO_INSTALL=(
   libappindicator-gtk3     # Gnome Shell extension for tray icons
   mozilla-https-everywhere # HTTPS enforcement extension for Mozilla Firefox
   mozilla-openh264         # H.264 codec support for Mozilla browsers
+  podman-compose
 )
 
 rpm-ostree install -y ${PACKAGES_TO_INSTALL[@]} 2> /dev/null && reboot
