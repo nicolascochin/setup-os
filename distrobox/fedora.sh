@@ -15,6 +15,6 @@ PACKAGES=(
 
 # $1: name of the distrobox
 custom_install() {
-  sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
-  sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
+  distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
+  distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
 }
