@@ -54,16 +54,6 @@ check_not_installed "oh-my-zsh plugin autosuggest" "test -d ${AUTOSUGGEST_DIR}" 
   git clone -q https://github.com/zsh-users/zsh-autosuggestions ${AUTOSUGGEST_DIR}
 )
 
-###############
-# HIGHLIGHTED #
-###############
-HIGHLIGHTED_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-DRACULA_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/dracula
-check_not_installed "oh-my-zsh plugin zsh-syntax-highlighting" "test -d ${HIGHLIGHTED_DIR}" && (
-  git clone -q https://github.com/zsh-users/zsh-syntax-highlighting.git ${HIGHLIGHTED_DIR}
-  git clone -q https://github.com/dracula/zsh-syntax-highlighting.git ${DRACULA_DIR}
-)
-
 ############################
 # FAST SYNTAX HIGHLIGHTING #
 ############################
