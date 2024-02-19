@@ -1,6 +1,21 @@
-# setup-os
+# Setup OS
 
-Execute the script from bash/zsh
+## Silverblue
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-silverblue.sh)
+```
+
+## Distrobox
+### Create the daily-fedora
+```
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) fedora daily-fedora
+```
+### Add the shortcut (custom)
+Command to use: `gnome-terminal --window -- distrobox enter daily-fedora`
+
+
+
+## ZSH
+```
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh)
 ```
