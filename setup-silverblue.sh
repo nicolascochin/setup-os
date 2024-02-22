@@ -20,6 +20,8 @@ echo "Packages installed."
 
 # Github
 gh auth status 2>&1 | grep -q "not logged into"  && echo "Login to Github" && gh auth login
+echo "Install Copilot extension for gh" && gh extension install github/gh-copilot
+echo "run gh extension upgrade gh-copilot to upgrade"
 
 ## Flatpak
 declare -A APPS=(
@@ -67,6 +69,7 @@ done
 ## Gnome Terminal
 curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/config/gnome-terminal-profiles.dconf -o /tmp/gnome.dconf && dconf load /org/gnome/terminal/legacy/profiles:/ < /tmp/gnome.dconf
 
+echo
 echo "Gnome extensions to install"
 echo https://extensions.gnome.org/extension/615/appindicator-support/
 echo https://extensions.gnome.org/extension/779/clipboard-indicator/
