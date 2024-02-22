@@ -24,12 +24,14 @@ gh auth status 2>&1 | grep -q "not logged into"  && echo "Login to Github" && gh
 ## Flatpak
 declare -A APPS=(
   ["com.protonvpn.www"]="Proton VPN"
-  ["com.vscodium.codium"]="VSCodium"
+  ["com.visualstudio.code"]="Visual Studio Code"
   ["com.spotify.Client"]="Spotify"
   ["org.videolan.VLC"]="VLC"
   ["com.brave.Browser"]="Brave Browser"
   ["io.podman_desktop.PodmanDesktop"]="Podman Desktop"
   ["rest.insomnia.Insomnia"]="Insomnia"
+  ["com.slack.Slack"]="Slack"
+  ["com.discordapp.Discord"]="Discord"
 )
 for KEY in "${!APPS[@]}"; do 
   NAME="${APPS[$KEY]}"
