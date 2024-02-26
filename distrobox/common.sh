@@ -1,4 +1,4 @@
-custom_install() {
+common_install() {
   echo "Link flatpak to host"  && distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
   echo "Link podman to host"   && distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
   echo "Link firefox to host"  && distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/firefox
