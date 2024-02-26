@@ -11,7 +11,7 @@ PACKAGES=(
   tmux 
   tmate
   figlet
-  flatpak-xdg-utils # required to run flatpak-spawn (cf plugin web-search)
+  #flatpak-xdg-utils # required to run flatpak-spawn (cf plugin web-search)
 )
 
 # $1: name of the distrobox
