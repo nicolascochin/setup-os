@@ -21,8 +21,8 @@ custom_install() {
   echo "Link firefox to host"  && distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/firefox
   echo "Link xdg-open to host" && distrobox enter $1 -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
 
-  echo "Install Plug for Neovim"    && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  echo "Install Copilot for Neovim" && git clone https://github.com/github/copilot.vim.git ~/.config/nvim/pack/github/start/copilot.vim
+  FILE="${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim && ! test -f $FILE && echo "Install Plug for Neovim"    && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  DIR=~/.config/nvim/pack/github/start/copilot.vim && ! test -d $DIR && echo "Install Copilot for Neovim" && git clone https://github.com/github/copilot.vim.git $DIR
 
-  echo "Install Tmux plugins" && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  DIR=~/.tmux/plugins/tpm && ! test -d $DIR && echo "Install Tmux plugins" && git clone https://github.com/tmux-plugins/tpm $DIR
 }
