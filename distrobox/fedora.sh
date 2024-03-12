@@ -11,6 +11,7 @@ PACKAGES=(
   tmux 
   tmate
   figlet
+  chromium
 )
 
 # $1: name of the distrobox
