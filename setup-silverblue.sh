@@ -3,7 +3,11 @@
 # Only on Silverblue
 ! grep -q Silverblue /etc/os-release && echo "This script only runs on Silverblue" && exit 1
 
+# Add VSCode repo
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
 PACKAGES_TO_INSTALL=(
+  code                     # VSC
   gh                       # Github CLI
   distrobox                # Distrobox
   libappindicator-gtk3     # Gnome Shell extension for tray icons
@@ -26,7 +30,6 @@ echo "run gh extension upgrade gh-copilot to upgrade"
 ## Flatpak
 declare -A APPS=(
   ["com.protonvpn.www"]="Proton VPN"
-  ["com.visualstudio.code"]="Visual Studio Code"
   ["com.spotify.Client"]="Spotify"
   ["org.videolan.VLC"]="VLC"
   ["com.brave.Browser"]="Brave Browser"
