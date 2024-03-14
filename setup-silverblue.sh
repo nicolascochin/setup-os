@@ -7,17 +7,22 @@
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
 PACKAGES_TO_INSTALL=(
-  code                     # VSC
+  code                     # VSCode
   gh                       # Github CLI
   distrobox                # Distrobox
   libappindicator-gtk3     # Gnome Shell extension for tray icons
   mozilla-https-everywhere # HTTPS enforcement extension for Mozilla Firefox
   mozilla-openh264         # H.264 codec support for Mozilla browsers
   podman-compose
+  zsh
+  fira-code-fonts          # Font for VSC
 )
 
 rpm-ostree install -y ${PACKAGES_TO_INSTALL[@]} 2> /dev/null && reboot
 echo "Packages installed."
+
+echo "Change shell for zsh"
+chsh --shell /bin/zsh $(whoami) 
 
 ## InitramFS
 ! rpm-ostree status -b | grep -q "Initramfs: regenerate" && (echo "Enable initramfs..." && rpm-ostree initramfs --enable 2> /dev/null && reboot) || echo "Initramfs already enabled"
