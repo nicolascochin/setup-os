@@ -11,7 +11,6 @@ PACKAGES=(
   tmux
   tmate
   figlet
-  chromium
 )
 
 create_distrobox() {
@@ -21,11 +20,12 @@ create_distrobox() {
     --additional-packages "$PACKAGES_TO_INSTALL"
 }
 
-custom_install() {
+post_install() {
   COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
   if curl --output /dev/null --silent --head --fail "$COMMON_SCRIPT_URL"; then
-    echo "Fetching common distrobox file"
     source <(curl -s "$COMMON_SCRIPT_URL")
-    common_install "$1"
+
+    setup_nvim_and_tmux
+    install_host_exec
   fi
 }

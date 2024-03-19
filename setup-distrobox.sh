@@ -59,5 +59,5 @@ echo "Packages: >${PACKAGES_TO_INSTALL}<"
 create_distrobox
 exit
 # distrobox enter $NAME -- chsh -s /bin/zsh
-fn_exists custom_install && custom_install
+fn_exists post_install && post_install
 distrobox enter $NAME
