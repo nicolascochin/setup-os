@@ -57,7 +57,7 @@ echo "Packages: >${PACKAGES_TO_INSTALL}<"
 ! do_we_continue && echo "Exiting..." && exit 1
 
 create_distrobox
-exit
+
 # distrobox enter $NAME -- chsh -s /bin/zsh
 fn_exists post_install && post_install
 distrobox enter $NAME
