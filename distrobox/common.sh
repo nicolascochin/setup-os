@@ -7,9 +7,9 @@ setup_nvim_and_tmux() {
 }
 
 install_host_exec() {
-  echo "Link flatpak to host"  && distrobox enter $NAME -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
-  echo "Link podman to host"   && distrobox enter $NAME -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
-  echo "Link firefox to host"  && distrobox enter $NAME -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/firefox
-  echo "Link xdg-open to host" && distrobox enter $NAME -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
-  echo "Link code to host" && distrobox enter $NAME -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/code
+  echo "Link flatpak to host"  && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
+  echo "Link podman to host"   && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
+  echo "Link firefox to host"  && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/firefox
+  echo "Link xdg-open to host" && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
+  echo "Link code to host" && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/code
 }

@@ -60,4 +60,4 @@ create_distrobox
 
 # distrobox enter $NAME -- chsh -s /bin/zsh
 fn_exists post_install && post_install
-distrobox enter $NAME
+enter_distrobox

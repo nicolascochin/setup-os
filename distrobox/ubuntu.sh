@@ -20,6 +20,10 @@ create_distrobox() {
     --additional-packages "$PACKAGES_TO_INSTALL"
 }
 
+enter_distrobox() {
+  distrobox enter $NAME "$@"
+}
+
 post_install() {
   COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
   if curl --output /dev/null --silent --head --fail "$COMMON_SCRIPT_URL"; then
