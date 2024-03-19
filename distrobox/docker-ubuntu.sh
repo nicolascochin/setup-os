@@ -29,11 +29,11 @@ create_distrobox() {
 
 post_install() {
   COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
-  if curl --output /dev/null --silent --head --fail "$COMMON_SCRIPT_URL"; then
-    source <(curl -s "$COMMON_SCRIPT_URL")
+  # if curl --output /dev/null --silent --head --fail "$COMMON_SCRIPT_URL"; then
+  #   source <(curl -s "$COMMON_SCRIPT_URL")
 
-    setup_nvim_and_tmux
-  fi
+  #   setup_nvim_and_tmux
+  # fi
   setup_docker
 }
 
