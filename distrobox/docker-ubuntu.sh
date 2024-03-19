@@ -22,7 +22,7 @@ create_distrobox() {
   distrobox create --root \
     --image ubuntu:$VERSION \
     --name $NAME \
-    --additional-packages "$PACKAGES_TO_INSTALL"
+    --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
     --unshare-all
 }
