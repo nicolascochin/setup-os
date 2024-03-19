@@ -1,20 +1,26 @@
-#!/bin/bash 
+#!/bin/bash
 
 PACKAGES=(
-  zsh 
-  gh 
-  neovim 
-  bat 
-  fzf 
-  jq 
-  git 
-  tmux 
+  zsh
+  gh
+  neovim
+  bat
+  fzf
+  jq
+  git
+  tmux
   tmate
   figlet
   chromium
 )
 
-# $1: name of the distrobox
+create_distrobox() {
+  distrobox create  \
+    --image fedora:$VERSION \
+    --name $NAME \
+    --additional-packages "$PACKAGES_TO_INSTALL"
+}
+
 custom_install() {
   COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
   if curl --output /dev/null --silent --head --fail "$COMMON_SCRIPT_URL"; then
