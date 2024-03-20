@@ -21,7 +21,7 @@ create_distrobox() {
 }
 
 enter_distrobox() {
-  distrobox enter $NAME
+  distrobox enter $NAME "$@"
 }
 
 post_install() {
