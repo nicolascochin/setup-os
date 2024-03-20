@@ -25,7 +25,7 @@ Command to use: `gnome-terminal --window -- distrobox enter daily-ubuntu`
 bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i docker-ubuntu -n docker-ubuntu
 ```
 ### Add the shortcut (custom)
-Command to use: `gnome-terminal --window -- distrobox enter docker-ubuntu`
+Command to use: `gnome-terminal --window -- distrobox enter --root docker-ubuntu`
 
 
 ## ZSH
