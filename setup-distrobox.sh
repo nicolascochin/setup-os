@@ -22,6 +22,18 @@ read_input() {
   read -p "$1" INPUT
   echo $INPUT
 }
+
+# $1 == URL
+# $2 == title
+source_remote_file() {
+echo "$2"
+if curl --output /dev/null --silent --head --fail "$1"; then
+  source <(curl -s "$1")
+else
+  echo "$1 is not found. Stop!"
+  exit 1
+fi
+}
 ##
 
 # Get args
@@ -40,16 +52,11 @@ VERSION=${INPUT_VERSION:-latest}
 NAME=${INPUT_NAME:-$(read_input "Enter a container name: ")}
 
 DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
-
+COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
 
 ## Script
-echo "Fetching recipe for distrobox $IMAGE"
-if curl --output /dev/null --silent --head --fail "$DISTRO_SCRIPT_URL"; then
-  source <(curl -s "$DISTRO_SCRIPT_URL")
-else
-  echo "$DISTRO_SCRIPT_URL is not found. Don't knwo how to build distrobox. Stop!"
-  exit 1
-fi
+source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $IMAGE"
+source_remote_file $COMMON_SCRIPT_URL "Fetching common functions"
 PACKAGES_TO_INSTALL=${PACKAGES[@]:-""}
 
 echo "Installing distrobox with name: $NAME"
