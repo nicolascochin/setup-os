@@ -6,6 +6,7 @@ PACKAGES=(
   curl            # Docker deps
   ca-certificates # Docker deps
 
+  direnv
   zsh
   gh
   neovim
