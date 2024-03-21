@@ -20,12 +20,12 @@ bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/se
 ### Add the shortcut (custom)
 Command to use: `gnome-terminal --window -- distrobox enter daily-ubuntu`
 
-### Create the docker-ubuntu
+### Create the docker-debian
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i docker-ubuntu -n docker-ubuntu
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i docker-debian -n docker-debian
 ```
 ### Add the shortcut (custom)
-Command to use: `gnome-terminal --window -- distrobox enter --root docker-ubuntu`
+Command to use: `gnome-terminal --window -- distrobox enter --root docker-debian`
 
 
 ## ZSH
