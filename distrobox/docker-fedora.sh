@@ -3,8 +3,7 @@
 PACKAGES=(
   systemd # required for docker
 
-  chromium
-  docker-compose
+  direnv
   zsh
   gh
   neovim
