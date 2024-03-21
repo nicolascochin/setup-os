@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PACKAGES=(
+  direnv
   zsh
   gh
   neovim
