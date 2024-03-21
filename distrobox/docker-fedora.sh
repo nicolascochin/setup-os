@@ -3,6 +3,7 @@
 PACKAGES=(
   systemd # required for docker
 
+  chromium
   docker-compose
   zsh
   gh
