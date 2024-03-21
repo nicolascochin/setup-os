@@ -16,6 +16,8 @@ PACKAGES_TO_INSTALL=(
   podman-compose
   zsh
   fira-code-fonts          # Font for VSC
+  solaar                   # Logitech keyboard
+  solaar-udev              # Logitech keyboard
 )
 
 rpm-ostree install -y ${PACKAGES_TO_INSTALL[@]} 2> /dev/null && reboot
