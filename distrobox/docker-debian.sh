@@ -6,8 +6,6 @@ PACKAGES=(
   curl            # Docker deps
   ca-certificates # Docker deps
 
-  docker-compose
-
   direnv
   zsh
   gh
