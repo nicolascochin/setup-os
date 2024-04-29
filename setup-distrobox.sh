@@ -54,6 +54,10 @@ NAME=${INPUT_NAME:-$(read_input "Enter a container name: ")}
 DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
 COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
 
+# Fetching the last version of the image
+echo "Fetching the last version of $IMAGE:$VERSION"
+podman pull $IMAGE:$VERSION
+
 ## Script
 source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $IMAGE"
 source_remote_file $COMMON_SCRIPT_URL "Fetching common functions"
