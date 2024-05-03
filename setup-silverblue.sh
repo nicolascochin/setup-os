@@ -86,3 +86,8 @@ echo https://extensions.gnome.org/extension/779/clipboard-indicator/
 echo https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/
 echo https://extensions.gnome.org/extension/2983/ip-finder/
 echo https://extensions.gnome.org/extension/4472/spotify-tray/
+echo https://extensions.gnome.org/extension/1460/vitals/
+
+echo 
+echo "Wallpaper"
+echo "https://unsplash.com/fr/photos/jouets-de-moto-blancs-et-bleus--kakq3VMtqU"
