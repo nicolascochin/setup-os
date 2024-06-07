@@ -13,3 +13,17 @@ install_host_exec() {
   echo "Link xdg-open to host" && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
   echo "Link code to host" && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/code
 }
+
+PACKAGES=(
+  direnv
+  zsh
+  gh
+  neovim
+  bat
+  fzf
+  jq
+  git
+  tmux
+  tmate
+  figlet
+)
