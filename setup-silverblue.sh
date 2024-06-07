@@ -4,7 +4,7 @@
 ! grep -q Silverblue /etc/os-release && echo "This script only runs on Silverblue" && exit 1
 
 # Add VSCode repo
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+[[ ! -f /etc/yum.repos.d/vscode.repo ]] && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
 PACKAGES_TO_INSTALL=(
   code                     # VSCode
@@ -12,7 +12,7 @@ PACKAGES_TO_INSTALL=(
   distrobox                # Distrobox
   libappindicator-gtk3     # Gnome Shell extension for tray icons
   mozilla-https-everywhere # HTTPS enforcement extension for Mozilla Firefox
-  mozilla-openh264         # H.264 codec support for Mozilla browsers
+  # mozilla-openh264         # H.264 codec support for Mozilla browsers NOT WORKING NOW
   podman-compose
   zsh
   fira-code-fonts          # Font for VSC
@@ -20,7 +20,7 @@ PACKAGES_TO_INSTALL=(
   solaar-udev              # Logitech keyboard
 )
 
-rpm-ostree install -y ${PACKAGES_TO_INSTALL[@]} 2> /dev/null && reboot
+rpm-ostree install -y ${PACKAGES_TO_INSTALL[@]} && reboot
 echo "Packages installed."
 
 echo "Change shell for zsh"
