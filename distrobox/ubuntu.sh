@@ -16,7 +16,7 @@ PACKAGES=(
 
 create_distrobox() {
   distrobox create  \
-    --image ubuntu:$VERSION \
+    --image debian:$VERSION \
     --name $NAME \
     --additional-packages "$PACKAGES_TO_INSTALL"
 }
