@@ -51,8 +51,8 @@ IMAGE=${INPUT_IMAGE:-$(read_input "Enter an image: ")}
 VERSION=${INPUT_VERSION:-latest}
 NAME=${INPUT_NAME:-$(read_input "Enter a container name: ")}
 
-DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
 COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
+DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
 
 # Fetching the last version of the image
 echo "Fetching the last version of $IMAGE:$VERSION"
