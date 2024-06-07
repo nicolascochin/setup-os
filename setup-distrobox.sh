@@ -59,8 +59,9 @@ echo "Fetching the last version of $IMAGE:$VERSION"
 podman pull $IMAGE:$VERSION
 
 ## Script
-source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $IMAGE"
 source_remote_file $COMMON_SCRIPT_URL "Fetching common functions"
+source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $IMAGE"
+
 PACKAGES_TO_INSTALL=${PACKAGES[@]:-""}
 
 echo "Installing distrobox with name: $NAME"
