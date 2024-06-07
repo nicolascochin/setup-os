@@ -1,22 +1,9 @@
 #!/bin/bash
 
-PACKAGES=(
-  systemd # required for docker
-
+PACKAGES+=(
+  systemd         # required for docker
   curl            # Docker deps
   ca-certificates # Docker deps
-
-  direnv
-  zsh
-  gh
-  neovim
-  bat
-  fzf
-  jq
-  git
-  tmux
-  tmate
-  figlet
 )
 
 create_distrobox() {
