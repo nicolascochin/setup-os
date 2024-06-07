@@ -1,19 +1,5 @@
 #!/bin/bash
 
-PACKAGES=(
-  direnv
-  zsh
-  gh
-  neovim
-  bat
-  fzf
-  jq
-  git
-  tmux
-  tmate
-  figlet
-)
-
 create_distrobox() {
   distrobox create  \
     --image fedora:$VERSION \
