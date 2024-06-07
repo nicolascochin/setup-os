@@ -15,10 +15,10 @@ Command to use: `gnome-terminal --window -- distrobox enter daily-fedora`
 
 ### Create the daily-ubuntu
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i ubuntu -n daily-ubuntu
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i debian -n daily-debian
 ```
 ### Add the shortcut (custom)
-Command to use: `gnome-terminal --window -- distrobox enter daily-ubuntu`
+Command to use: `gnome-terminal --window -- distrobox enter daily-debian`
 
 ### Create the docker-debian
 ```
