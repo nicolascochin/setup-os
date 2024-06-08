@@ -15,6 +15,7 @@ install_host_exec() {
 }
 
 PACKAGES=(
+  code
   direnv
   zsh
   gh
