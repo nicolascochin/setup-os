@@ -13,12 +13,12 @@ bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/se
 ### Add the shortcut (custom)
 Command to use: `gnome-terminal --window -- distrobox enter daily-fedora`
 
-### Create the daily-debian
+### Create the dev
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i debian -n daily-debian
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i debian -n dev
 ```
 ### Add the shortcut (custom)
-Command to use: `gnome-terminal --window -- distrobox enter daily-debian`
+Command to use: `gnome-terminal --window -- distrobox enter dev`
 
 ### Create the docker-debian
 ```
