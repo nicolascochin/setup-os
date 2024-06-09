@@ -3,7 +3,10 @@
 # Only on Silverblue
 ! grep -q Silverblue /etc/os-release && echo "This script only runs on Silverblue" && exit 1
 
+[[ ! -f /etc/yum.repos.d/vscode.repo ]] && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+
 PACKAGES_TO_INSTALL=(
+  code                     # VSCode
   gh                       # Github CLI
   distrobox                # Distrobox
   libappindicator-gtk3     # Gnome Shell extension for tray icons
