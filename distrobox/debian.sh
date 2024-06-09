@@ -13,7 +13,7 @@ create_distrobox() {
     --unshare-all \
     --init \
     --init-hooks "sudo systemctl enable ssh" \
-    --additional-packages "$PACKAGES_TO_INSTALL"
+    --additional-packages "$PACKAGES_TO_INSTALL" \
     --additional-flags "-p 2222:22" 
 }
 
