@@ -22,6 +22,9 @@ enter_distrobox() {
 }
 
 post_install() {
+  echo "Finish installation"
+  enter_distrobox -- echo
+  
   echo "Config SSH"
   echo <<EOF >> ~/.ssh/config
 Host $NAME
@@ -29,8 +32,7 @@ Host $NAME
   Port $PORT
   HostName localhost
 EOF
-  enter_distrobox -- echo
-  
+ 
   echo "Set password"
   enter_distrobox -- passwd
 
