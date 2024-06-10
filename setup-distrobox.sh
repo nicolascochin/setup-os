@@ -62,7 +62,7 @@ DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main
 
 ## Script
 source_remote_file $COMMON_SCRIPT_URL "Fetching common functions"
-source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $IMAGE"
+source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $FILE"
 
 PACKAGES_TO_INSTALL=${PACKAGES[@]:-""}
 
