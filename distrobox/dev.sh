@@ -29,7 +29,8 @@ Host $NAME
   Port $PORT
   HostName localhost
 EOF
-
+  enter_distrobox -- echo
+  
   echo "Set password"
   enter_distrobox -- passwd
 
