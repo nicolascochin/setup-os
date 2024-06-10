@@ -8,7 +8,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/se
 ## Distrobox
 ### Create the daily-fedora
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -i fedora -n daily-fedora
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -f fedora -n daily-fedora
 ```
 ### Add the shortcut (custom)
 Command to use: `gnome-terminal --window -- distrobox enter daily-fedora`
