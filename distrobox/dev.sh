@@ -6,6 +6,7 @@ PACKAGES+=(
   build-essential 
   libz-dev # rbenv
   libpq-dev # ruby
+  rbenv
 )
 
 create_distrobox() {
