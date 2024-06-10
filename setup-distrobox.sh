@@ -37,10 +37,10 @@ fi
 ##
 
 # Get args
-while getopts i:v:n:p: flag
+while getopts f:v:n:p: flag
 do
     case "${flag}" in
-        i) INPUT_IMAGE=${OPTARG};;
+        f) INPUT_FILE=${OPTARG};;
         v) INPUT_VERSION=${OPTARG};;
         n) INPUT_NAME=${OPTARG};;
         p) INPUT_PORT=${OPTARG};;
@@ -48,17 +48,17 @@ do
 done
 
 # Ask for user input if args were not given
-IMAGE=${INPUT_IMAGE:-$(read_input "Enter an image: ")}
+FILE=${INPUT_FILE:-$(read_input "Enter a file: ")}
 VERSION=${INPUT_VERSION:-latest}
 NAME=${INPUT_NAME:-$(read_input "Enter a container name: ")}
 PORT=${INPUT_PORT}
 
 COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
-DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
+DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$FILE.sh"
 
-# Fetching the last version of the image
-echo "Fetching the last version of $IMAGE:$VERSION"
-podman pull $IMAGE:$VERSION
+## Fetching the last version of the image
+#echo "Fetching the last version of $IMAGE:$VERSION"
+#podman pull $IMAGE:$VERSION
 
 ## Script
 source_remote_file $COMMON_SCRIPT_URL "Fetching common functions"
