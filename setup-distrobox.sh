@@ -37,12 +37,13 @@ fi
 ##
 
 # Get args
-while getopts i:v:n: flag
+while getopts i:v:n:p: flag
 do
     case "${flag}" in
         i) INPUT_IMAGE=${OPTARG};;
         v) INPUT_VERSION=${OPTARG};;
         n) INPUT_NAME=${OPTARG};;
+        p) INPUT_PORT=${OPTARG};;
     esac
 done
 
@@ -50,6 +51,7 @@ done
 IMAGE=${INPUT_IMAGE:-$(read_input "Enter an image: ")}
 VERSION=${INPUT_VERSION:-latest}
 NAME=${INPUT_NAME:-$(read_input "Enter a container name: ")}
+PORT=${INPUT_PORT}
 
 COMMON_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/common.sh"
 DISTRO_SCRIPT_URL="https://raw.githubusercontent.com/nicolascochin/setup-os/main/distrobox/$IMAGE.sh"
