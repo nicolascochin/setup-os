@@ -26,7 +26,7 @@ post_install() {
   enter_distrobox -- echo
   
   echo "Config SSH"
-  echo <<EOF >> ~/.ssh/config
+  cat <<EOF >> ~/.ssh/config
 Host $NAME
   User nico
   Port $PORT
