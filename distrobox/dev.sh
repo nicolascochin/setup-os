@@ -22,4 +22,17 @@ enter_distrobox() {
 }
 
 post_install() {
+  echo "Config SSH"
+  echo <<EOF >> ~/.ssh/config
+Host $NAME
+  User nico
+  Port $PORT
+  HostName localhost
+EOF
+
+  echo "Set password"
+  enter_distrobox -- passwd
+
+  echo "Copy SSH ID"
+  ssh-copy-id $NAME
 }
