@@ -13,11 +13,10 @@ create_distrobox() {
     --image debian:$VERSION \
     --name $NAME \
     --hostname $NAME \
-    --unshare-all \
     --init \
-    --init-hooks "sudo systemctl enable ssh" \
+    --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" \
     --additional-packages "$PACKAGES_TO_INSTALL" \
-    --additional-flags "-p $PORT:22" 
+    --additional-flags "-p $PORT:$PORT" 
 }
 
 enter_distrobox() {
