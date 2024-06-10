@@ -4,7 +4,7 @@ PACKAGES+=(
   systemd
   openssh-server
   build-essential 
-  zlib-dev # rbenv
+  libz-dev # rbenv
   libpq-dev # ruby
 )
 
