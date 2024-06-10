@@ -3,6 +3,9 @@
 PACKAGES+=(
   systemd
   openssh-server
+  build-essential 
+  zlib-dev # rbenv
+  libpq-dev # ruby
 )
 
 create_distrobox() {
