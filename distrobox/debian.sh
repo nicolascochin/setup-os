@@ -14,7 +14,7 @@ create_distrobox() {
     --init \
     --init-hooks "sudo systemctl enable ssh" \
     --additional-packages "$PACKAGES_TO_INSTALL" \
-    --additional-flags "-p 2222:22" 
+    --additional-flags "-p $PORT:22" 
 }
 
 enter_distrobox() {
