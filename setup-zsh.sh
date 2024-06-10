@@ -63,13 +63,13 @@ check_not_installed "oh-my-zsh plugin fast syntaxt hightlighting" "test -d ${FAS
 )
 
 
-##########
-# ANYENV #
-##########
-ANYENV_DIR=${HOME}/.anyenv
-check_not_installed anyenv "test -d ${ANYENV_DIR}" && (
-  git clone -q https://github.com/anyenv/anyenv ${ANYENV_DIR}
-  ${ANYENV_DIR}/bin/anyenv install --force-init
+#######
+# NVM #
+#######
+NVM_DIR=${HOME}/.nvm
+check_not_installed nvm "test -d ${NVM_DIR}" && (
+  cd
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 )
 
 #######
