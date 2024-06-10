@@ -16,8 +16,7 @@ create_distrobox() {
     --hostname $NAME \
     --init \
     --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" \
-    --additional-packages "$PACKAGES_TO_INSTALL" \
-    --additional-flags "-p $PORT:$PORT" 
+    --additional-packages "$PACKAGES_TO_INSTALL" 
 }
 
 enter_distrobox() {
@@ -35,10 +34,4 @@ Host $NAME
   Port $PORT
   HostName localhost
 EOF
- 
-  echo "Set password"
-  enter_distrobox -- passwd
-
-  echo "Copy SSH ID"
-  ssh-copy-id $NAME
 }
