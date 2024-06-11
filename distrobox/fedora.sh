@@ -14,4 +14,6 @@ enter_distrobox() {
 post_install() {
   echo "Finish installation"
   enter_distrobox -- echo
+
+  install_host_exec
 }
