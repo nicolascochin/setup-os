@@ -7,6 +7,7 @@ PACKAGES+=(
   libz-dev # rbenv
   libpq-dev # ruby
   rbenv
+  chromium # visual tests
 )
 
 create_distrobox() {
