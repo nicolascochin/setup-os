@@ -32,6 +32,9 @@ post_install() {
 
   echo "Setup ZSH"
   enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
+
+  echo "Setup vim, copilot and tmux"
+  setup_nvim_and_tmux
   
   echo "Config SSH"
   cat <<EOF >> ~/.ssh/config
