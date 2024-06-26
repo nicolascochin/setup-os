@@ -10,18 +10,41 @@ create_distrobox() {
   distrobox create --root \
     --image debian:$VERSION \
     --name $NAME \
+    --hostname $NAME \
+    --home ${HOME}/distroboxes/${NAME} \
+    --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:ro \
     --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
+    --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" \
     --unshare-all
 }
 
 post_install() {
+  echo "Finish installation"
+  enter_distrobox -- echo
+  
+  echo "Setup ZSH"
+  enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
+
+  echo "Setup vim, copilot and tmux"
   setup_nvim_and_tmux
+  
+  echo "Install Docker"
   install_docker
+  
+  echo "Config SSH"
+  cat <<EOF >> ~/.ssh/config
+Host $NAME
+  User nico
+  Port $PORT
+  HostName localhost
+EOF
+
+  echo "Enter distrobox and setup config-files project"
 }
 
 enter_distrobox() {
-  distrobox enter --root $NAME "$@"
+  distrobox enter --root --no-workdir --clean-path $NAME "$@"
 }
 
 install_docker() {
