@@ -35,6 +35,9 @@ post_install() {
 
   echo "Setup vim, copilot and tmux"
   setup_nvim_and_tmux
+
+  echo "Add host's podman"
+  echo "Link podman to host"   && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
   
   echo "Config SSH"
   cat <<EOF >> ~/.ssh/config
