@@ -2,7 +2,7 @@
 
 PACKAGES+=(
   systemd
-  openssh-serverho
+  openssh-server
   build-essential 
   libz-dev # rbenv
   libpq-dev # ruby
