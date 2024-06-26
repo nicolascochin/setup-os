@@ -2,7 +2,7 @@
 
 PACKAGES+=(
   systemd
-  openssh-server
+  openssh-serverho
   build-essential 
   libz-dev # rbenv
   libpq-dev # ruby
@@ -15,6 +15,8 @@ create_distrobox() {
     --image debian:$VERSION \
     --name $NAME \
     --hostname $NAME \
+    --home ${HOME}/distroboxes/${NAME} \
+    --volume ${HOME}/Workspace:Workspace:ro \
     --init \
     --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" \
     --additional-packages "$PACKAGES_TO_INSTALL" 
