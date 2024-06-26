@@ -23,12 +23,15 @@ create_distrobox() {
 }
 
 enter_distrobox() {
-  distrobox enter --no-workdir $NAME "$@"
+  distrobox enter --no-workdir --clean-path $NAME "$@"
 }
 
 post_install() {
   echo "Finish installation"
   enter_distrobox -- echo
+
+  echo "Setup ZSH"
+  enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh)"
   
   echo "Config SSH"
   cat <<EOF >> ~/.ssh/config
@@ -37,4 +40,6 @@ Host $NAME
   Port $PORT
   HostName localhost
 EOF
+
+  echo "Enter distrobox and setup config-files project"
 }
