@@ -31,7 +31,7 @@ post_install() {
   enter_distrobox -- echo
 
   echo "Setup ZSH"
-  enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
+  enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
   
   echo "Config SSH"
   cat <<EOF >> ~/.ssh/config
