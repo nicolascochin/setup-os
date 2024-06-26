@@ -68,7 +68,7 @@ check_not_installed "oh-my-zsh plugin fast syntaxt hightlighting" "test -d ${FAS
 #######
 NVM_DIR=${HOME}/.nvm
 check_not_installed nvm "test -d ${NVM_DIR}" && (
-  cd
+  cd ${HOME}
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 )
 
