@@ -16,14 +16,14 @@ create_distrobox() {
     --name $NAME \
     --hostname $NAME \
     --home ${HOME}/distroboxes/${NAME} \
-    --volume ${HOME}/Workspace:/home/$(whoami)/Workspace:ro \
+    --volume ${HOME}/Workspace:/home/$(whoami)/distroboxes/${NAME}/Workspace:ro \
     --init \
     --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" \
     --additional-packages "$PACKAGES_TO_INSTALL" 
 }
 
 enter_distrobox() {
-  distrobox enter $NAME "$@"
+  distrobox enter --no-workdir $NAME "$@"
 }
 
 post_install() {
