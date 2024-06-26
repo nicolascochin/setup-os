@@ -43,7 +43,7 @@ check_not_installed "oh-my-zsh theme powerlevel10k" "test -d ${POWERLEVEL_10K_DI
 ###########
 ZSHRCD_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zshrc.d
 check_not_installed "oh-my-zsh plugin zshrc.d" "test -d ${ZSHRCD_DIR}" && (
-  git clone https://github.com/mattmc3/zshrc.d ${ZSHRCD_DIR}
+  git clone -q https://github.com/mattmc3/zshrc.d ${ZSHRCD_DIR}
 )
 
 ###################
