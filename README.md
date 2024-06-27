@@ -4,7 +4,10 @@
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-silverblue.sh)
 ```
-
+## ZSH
+```
+bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh)
+```
 ## Distrobox
 ### Create the daily-fedora
 ```
@@ -28,7 +31,3 @@ bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/se
 Command to use: `gnome-terminal --window -- distrobox enter --no-workdir --clean-path --root  docker-debian`
 
 
-## ZSH
-```
-bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh)
-```
