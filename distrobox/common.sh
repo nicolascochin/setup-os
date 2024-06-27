@@ -38,5 +38,6 @@ DEV_PACKAGES=(
   libffi-dev # ruby 3
   libyaml-dev # ruby 3
   rbenv
+  ruby-build
   chromium # visual tests
 )
