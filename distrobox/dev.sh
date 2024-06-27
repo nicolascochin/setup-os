@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGES+="$DEV_PACKAGES[@]"
+PACKAGES+=("$DEV_PACKAGES[@]")
 
 create_distrobox() {
   distrobox create  \
