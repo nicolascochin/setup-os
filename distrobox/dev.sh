@@ -1,17 +1,6 @@
 #!/bin/bash
 
-#PACKAGES+=("$DEV_PACKAGES[@]")
-PACKAGES+=(
-  systemd
-  openssh-server
-  build-essential 
-  libz-dev # rbenv
-  libpq-dev # ruby
-  libffi-dev # ruby 3
-  libyaml-dev # ruby 3
-  rbenv
-  chromium # visual tests
-)
+PACKAGES+=("$DEV_PACKAGES[@]")
 
 create_distrobox() {
   distrobox create  \
