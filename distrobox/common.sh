@@ -29,8 +29,7 @@ PACKAGES=(
   figlet
 )
 
-DEV_PACKAGES=$PACKAGES
-DEV_PACKAGES+=(
+DEV_PACKAGES=(
   systemd
   openssh-server
   build-essential 
