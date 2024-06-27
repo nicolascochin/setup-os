@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGES+=$DEV_PACKAGES
+PACKAGES+=(${DEV_PACKAGES[@]})
 PACKAGES+=(
   curl            # Docker deps
   ca-certificates # Docker deps
