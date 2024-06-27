@@ -1,15 +1,9 @@
 #!/bin/bash
 
+PACKAGES+=$DEV_PACKAGES
 PACKAGES+=(
-  systemd         # required for docker
   curl            # Docker deps
   ca-certificates # Docker deps
-  openssh-server  # ssh
-  build-essential 
-  libz-dev        # rbenv
-  libpq-dev       # ruby
-  rbenv
-  chromium        # visual tests
 )
 
 create_distrobox() {
