@@ -22,16 +22,19 @@ create_distrobox() {
 post_install() {
   echo "Finish installation"
   enter_distrobox -- echo
-  
+
+  echo
+  echo
   echo "Setup ZSH"
   enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
 
-  echo "Setup vim, copilot and tmux"
-  setup_nvim_and_tmux
-  
+  echo
+  echo
   echo "Install Docker"
   install_docker
   
+  echo
+  echo  
   echo "Config SSH"
   cat <<EOF >> ~/.ssh/config
 Host $NAME
@@ -39,7 +42,8 @@ Host $NAME
   Port $PORT
   HostName localhost
 EOF
-
+  echo
+  echo
   echo "Enter distrobox and setup config-files project"
 }
 
