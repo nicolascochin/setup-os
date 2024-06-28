@@ -62,16 +62,6 @@ check_not_installed "oh-my-zsh plugin fast syntaxt hightlighting" "test -d ${FAS
   git clone -q https://github.com/z-shell/F-Sy-H.git ${FAST_SYNTAXT_HIGHLIGHTING_DIR}
 )
 
-
-#######
-# NVM #
-#######
-NVM_DIR=${HOME}/.nvm
-check_not_installed nvm "test -d ${NVM_DIR}" && (
-  cd ${HOME}
-  curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-)
-
 #######
 # FIG #
 #######
