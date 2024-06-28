@@ -21,18 +21,15 @@ enter_distrobox() {
 post_install() {
   echo "Finish installation"
   enter_distrobox -- echo
-
-  echo
   echo
   echo "Setup ZSH"
   enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
-
-  echo
+  echo 
+  echo "Install NVM"
+  install_nvm
   echo
   echo "Add host's podman"
   echo "Link podman to host"   && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
-
-  echo
   echo
   echo "Config SSH"
   cat <<EOF >> ~/.ssh/config
@@ -41,8 +38,6 @@ Host $NAME
   Port $PORT
   HostName localhost
 EOF
-
-  echo
   echo
   echo "Enter distrobox and setup config-files project"
 }
