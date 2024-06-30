@@ -28,7 +28,6 @@ post_install() {
   echo "Install NVM"
   install_nvm
   echo
-  echo "Add host's podman"
   echo "Link podman to host"   && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
   echo
   echo "Config SSH"
