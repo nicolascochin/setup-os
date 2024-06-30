@@ -9,11 +9,11 @@ setup_nvim_and_tmux() {
 }
 
 install_nvm() {
-  echo "Install NVM" && enter_distrobox -- sh -c "test -d ${HOME}/.nvm && curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+  echo "Install NVM" && enter_distrobox -- sh -c "! test -d ${HOME}/.nvm && curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
 }
 
 install_ruby_build() {
-   echo "Install Ruby build" && enter_distrobox -- sh -c "git clone -q https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build"
+   echo "Install Ruby build" && enter_distrobox -- bash -c "git clone -q https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build"
 }
 
 install_host_exec() {
