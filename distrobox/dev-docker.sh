@@ -27,7 +27,6 @@ post_install() {
   enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
   echo
   install_nvm
-  install_ruby_build
   echo
   echo "Install Docker"
   install_docker
