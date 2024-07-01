@@ -9,7 +9,7 @@ setup_nvim_and_tmux() {
 }
 
 install_nvm() {
-  echo "Install NVM" && enter_distrobox -- sh -c "NVM_DIR=${HOME}/.nvm && ! test -d ${NVM_DIR} && curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+  echo "Install NVM" && enter_distrobox -- sh -c "export NVM_DIR=${HOME}/.nvm && ! test -d ${NVM_DIR} && curl -s -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
 }
 
 install_host_exec() {
