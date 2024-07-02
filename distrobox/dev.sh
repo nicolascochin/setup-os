@@ -36,5 +36,7 @@ Host $NAME
   HostName localhost
 EOF
   echo
+  install_gh_and_ssh
+  echo
   echo "Enter distrobox and setup config-files project"
 }
