@@ -19,11 +19,11 @@ install_host_exec() {
   echo "Link xdg-open to host" && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open
 }
 
-install_gh_and_ssh(
+install_gh_and_ssh() {
   echo "Login to Github" && enter_distrobox -- gh auth login
   echo "Set new password" && enter_distrobox -- passwd
   echo "SSH copy ID" && ssh-copy-id $NAME 
-)
+}
 
 PACKAGES=(
   direnv
