@@ -18,6 +18,17 @@ enter_distrobox() {
   distrobox enter --no-workdir --clean-path $NAME "$@"
 }
 
+pre_install() {
+  echo "Setup SSH"
+  echo "Current used ports are: "
+  sed -n -e '/^Host /{h;d;}' -e '/^\ *Port /{H;x;s/\n/ /p;}' ~/.ssh/config
+  while
+    read -p "Please enter a port number: " $PORT
+    ! echo "$PORT" | grep -qE '^[0-9]+$'
+  do true; done
+  PACKAGES+=(openssh-server)
+}
+
 post_install() {
   echo "Finish installation"
   enter_distrobox -- echo
