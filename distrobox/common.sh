@@ -41,7 +41,6 @@ PACKAGES=(
 
 DEV_PACKAGES=(
   systemd
-  openssh-server
   build-essential 
   libz-dev # rbenv
   libpq-dev # ruby
