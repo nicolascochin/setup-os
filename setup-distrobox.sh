@@ -66,6 +66,8 @@ source_remote_file $DISTRO_SCRIPT_URL "Fetching recipe for distrobox $FILE"
 
 PACKAGES_TO_INSTALL=${PACKAGES[@]:-""}
 
+fn_exists pre_install && pre_install
+
 echo "Installing distrobox with name: $NAME"
 echo "Packages: >${PACKAGES_TO_INSTALL}<"
 ! do_we_continue && echo "Exiting..." && exit 1
