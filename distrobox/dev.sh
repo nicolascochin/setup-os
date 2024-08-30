@@ -11,8 +11,7 @@ create_distrobox() {
     --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
     --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
-    --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" \
-    --unshare-all
+    --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" 
 }
 
 enter_distrobox() {
