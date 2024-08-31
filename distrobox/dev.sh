@@ -23,7 +23,7 @@ pre_install() {
   echo "Current used ports are: "
   sed -n -e '/^Host /{h;d;}' -e '/^\ *Port /{H;x;s/\n/ /p;}' ~/.ssh/config
   while
-    read -p "Please enter a port number: " $PORT
+    read -p "Please enter a port number: " PORT
     ! echo "$PORT" | grep -qE '^[0-9]+$'
   do true; done
   PACKAGES+=(openssh-server)
