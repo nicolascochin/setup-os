@@ -4,6 +4,8 @@ PACKAGES+=(${DEV_PACKAGES[@]})
 PACKAGES+=(
   curl            # Docker deps
   ca-certificates # Docker deps
+  firefox-esr     # stable browser (used by vscode)
+  gnome-keyring   # required by VSC
 )
 
 create_distrobox() {
