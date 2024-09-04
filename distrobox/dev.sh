@@ -3,6 +3,7 @@
 PACKAGES+=(${DEV_PACKAGES[@]})
 
 create_distrobox() {
+echo "===>$PORT<====="
   distrobox create  \
     --image debian:$VERSION \
     --name $NAME \
