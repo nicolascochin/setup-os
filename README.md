@@ -16,6 +16,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/se
 ### Add the shortcut (custom)
 Command to use: `gnome-terminal --window -- distrobox enter daily-fedora`
 
+> [!NOTE]  
+> Install rbenv build && run rbenv rehash 
+
 ### Create the dev
 ```
 bash <(curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-distrobox.sh) -f dev -n dev -p 2222
