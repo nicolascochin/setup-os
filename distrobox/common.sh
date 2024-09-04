@@ -48,4 +48,5 @@ DEV_PACKAGES=(
   libyaml-dev # ruby 3
   rbenv
   chromium # visual tests
+  openssh-server
 )
