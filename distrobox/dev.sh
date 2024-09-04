@@ -3,7 +3,6 @@
 PACKAGES+=(${DEV_PACKAGES[@]})
 
 create_distrobox() {
-echo "===>$PORT<====="
   distrobox create  \
     --image debian:$VERSION \
     --name $NAME \
@@ -27,7 +26,6 @@ pre_install() {
     read -p "Please enter a port number: " PORT
     ! echo "$PORT" | grep -qE '^[0-9]+$'
   do true; done
-  PACKAGES+=(openssh-server)
 }
 
 post_install() {
