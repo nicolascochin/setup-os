@@ -4,8 +4,7 @@ PACKAGES+=(${DEV_PACKAGES[@]})
 PACKAGES+=(
   curl            # Docker deps
   ca-certificates # Docker deps
-  firefox-esr     # stable browser (used by vscode)
-  gnome-keyring   # required by VSC
+  firefox-esr     # stable browser 
 )
 
 create_distrobox() {
@@ -17,6 +16,7 @@ create_distrobox() {
     --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
     --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
+    --init-hooks "sudo sed -i \"s/^#Port 22/Port 22/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"  \
     --unshare-all
 }
 
@@ -28,28 +28,24 @@ post_install() {
   enter_distrobox -- sh -c "unset ZSH && unset NVM_DIR && unset XDG_CONFIG_HOME && curl -Ls https://raw.githubusercontent.com/nicolascochin/setup-os/main/setup-zsh.sh | bash"
   echo
   install_nvm
-  echo
-  echo "Install VSC" && install_vscode
   echo 
   echo "Install Docker" && install_docker
   echo
-  echo "Login to Github" && enter_distrobox -- gh auth login
+  echo "Config SSH"
+  cat <<EOF >> ~/.ssh/config
+Host $NAME
+  User $(whoami)
+  Port 22
+  HostName ${NAME}.local
+EOF
+  echo
+  install_gh_and_ssh
   echo  
   echo "Enter distrobox and setup config-files project"
 }
 
 enter_distrobox() {
   distrobox enter --root --no-workdir --clean-path $NAME "$@"
-}
-
-install_vscode() {
-  enter_distrobox -- sudo apt-get install wget gpg
-  enter_distrobox -- wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/packages.microsoft.gpg
-  enter_distrobox -- sudo install -D -o root -g root -m 644 /tmp/packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-  enter_distrobox -- sh -c "echo 'deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main' |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null"
-  enter_distrobox -- sudo apt install apt-transport-https
-  enter_distrobox -- sudo apt update
-  enter_distrobox -- sudo apt install code
 }
 
 install_docker() {
