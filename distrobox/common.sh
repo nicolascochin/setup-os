@@ -12,6 +12,10 @@ install_nvm() {
   echo "Install NVM" && enter_distrobox -- sh -c "unset NVM_DIR && unset XDG_CONFIG_HOME && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
 }
 
+is_ssh_setup() {
+  test -z $SKIP_SSH
+}
+
 setup_rbenv() {
   echo
   echo "Setup RBenv"
@@ -31,7 +35,7 @@ install_host_exec() {
 install_gh_and_ssh() {
   echo "Login to Github" && enter_distrobox -- gh auth login
   echo "Set new password" && enter_distrobox -- passwd
-  [[ -z $SKIP_SSH ]] && echo "SSH copy ID" && ssh-copy-id $NAME 
+  is_ssh_setup && echo "SSH copy ID" && ssh-copy-id $NAME 
 }
 
 PACKAGES=(
