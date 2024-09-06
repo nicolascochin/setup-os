@@ -11,7 +11,7 @@ create_distrobox() {
     --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
     --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
-    --init-hooks $(init_hook_ssh)
+    --init-hooks ""
 }
 
 init_hook_ssh() {
