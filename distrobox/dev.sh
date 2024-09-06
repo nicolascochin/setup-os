@@ -12,9 +12,9 @@ create_distrobox() {
   is_ssh_setup && create_args+=( "--init --init-hooks \"sudo sed -i \\\"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh\\\"" ) 
 
   echo "$create_args"
-  echo "distrobox create  $(echo "$create_args")"
+  echo "distrobox create  $(echo "${create_args[@]}")"
   ! do_we_continue && echo "Exiting..." && exit 1
-  distrobox create  $(echo "$args")  
+  distrobox create  $(echo "${create_args[@]}")  
 }
 
 enter_distrobox() {
