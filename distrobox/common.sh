@@ -12,6 +12,12 @@ install_nvm() {
   echo "Install NVM" && enter_distrobox -- sh -c "unset NVM_DIR && unset XDG_CONFIG_HOME && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
 }
 
+setup_rbenv() {
+  RBENV_DIR=$(enter_distrobox -- rbenv root)
+  enter_distrobox -- git clone https://github.com/rbenv/ruby-build.git "${RBENV_DIR}"/plugins/ruby-build
+  enter_distrobox -- rbenv rehash
+}
+
 install_host_exec() {
   echo "Link flatpak to host"  && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
   echo "Link podman to host"   && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
