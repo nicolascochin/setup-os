@@ -13,9 +13,12 @@ install_nvm() {
 }
 
 setup_rbenv() {
+  echo
+  echo "Setup RBenv"
   RBENV_DIR=$(enter_distrobox -- rbenv root)
   enter_distrobox -- git clone https://github.com/rbenv/ruby-build.git "${RBENV_DIR}"/plugins/ruby-build
   enter_distrobox -- rbenv rehash
+  echo
 }
 
 install_host_exec() {
