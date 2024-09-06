@@ -15,8 +15,8 @@ create_distrobox() {
 }
 
 init_hook_ssh() {
-  if [[ -z $SKIP_SSH ]]; then 
-    echo ""
+  if [[ -n $SKIP_SSH ]]; then 
+    echo "echo 'skipping ssh'"
   else
     echo "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"
   fi
@@ -51,13 +51,15 @@ post_install() {
   setup_rbenv
   echo "Link podman to host"   && enter_distrobox -- sudo ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
   echo
-  echo "Config SSH"
-  cat <<EOF >> ~/.ssh/config
+  [[ -z $SKIP_SSH ]] && (
+    echo "Config SSH"
+    cat <<EOF >> ~/.ssh/config
 Host $NAME
   User nico
   Port $PORT
   HostName localhost
 EOF
+)
   echo
   install_gh_and_ssh
   echo
