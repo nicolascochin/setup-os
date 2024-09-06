@@ -3,14 +3,15 @@
 PACKAGES+=(${DEV_PACKAGES[@]})
 
 create_distrobox() {
-  distrobox create  \
-    --image debian:$VERSION \
-    --name $NAME \
-    --hostname $NAME \
-    --home ${HOME}/distroboxes/${NAME} \
-    --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
-    --additional-packages "$PACKAGES_TO_INSTALL" \
-    `if is_ssh_setup; then --init --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"; fi`
+  args=()
+  args+=("--image debian:$VERSION")
+  args+=("--name $NAME")
+  args+=("--hostname $NAME")
+  args+=("--home ${HOME}/distroboxes/${NAME}")
+  args+=("--additional-packages $PACKAGES_TO_INSTALL")
+  is_ssh_setup && args+=( "--init --init-hooks \"sudo sed -i \\\"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh\\\"" ) 
+  
+  distrobox create  $(echo "$args")  
 }
 
 enter_distrobox() {
