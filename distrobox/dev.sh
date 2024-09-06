@@ -10,7 +10,10 @@ create_distrobox() {
   args+=("--home ${HOME}/distroboxes/${NAME}")
   args+=("--additional-packages $PACKAGES_TO_INSTALL")
   is_ssh_setup && args+=( "--init --init-hooks \"sudo sed -i \\\"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh\\\"" ) 
-  
+
+  echo "$args"
+  echo "distrobox create  $(echo "$args")"
+  ! do_we_continue && echo "Exiting..." && exit 1
   distrobox create  $(echo "$args")  
 }
 
