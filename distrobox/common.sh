@@ -31,7 +31,7 @@ install_host_exec() {
 install_gh_and_ssh() {
   echo "Login to Github" && enter_distrobox -- gh auth login
   echo "Set new password" && enter_distrobox -- passwd
-  echo "SSH copy ID" && ssh-copy-id $NAME 
+  [[ -z $SKIP_SSH ]] && echo "SSH copy ID" && ssh-copy-id $NAME 
 }
 
 PACKAGES=(
