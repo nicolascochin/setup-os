@@ -8,7 +8,7 @@ create_distrobox() {
   create_args+=("--name $NAME")
   create_args+=("--hostname $NAME")
   create_args+=("--home ${HOME}/distroboxes/${NAME}")
-  create_args+=("--additional-packages $PACKAGES_TO_INSTALL")
+  create_args+=("--additional-packages \"$PACKAGES_TO_INSTALL\"")
   is_ssh_setup && create_args+=( "--init --init-hooks \"sudo sed -i \\\"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh\\\"" ) 
 
   echo "$create_args"
