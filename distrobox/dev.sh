@@ -3,9 +3,6 @@
 PACKAGES+=(${DEV_PACKAGES[@]})
 
 create_distrobox() {
-  init-hooks-args=()
-  init_hook_ssh && init-hooks-args+=("--init-hooks \"sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh\"")
-  
   distrobox create  \
     --image debian:$VERSION \
     --name $NAME \
