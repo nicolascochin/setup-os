@@ -3,6 +3,9 @@
 PACKAGES+=(${DEV_PACKAGES[@]})
 
 create_distrobox() {
+  init-hooks-args=()
+  init_hook_ssh && init-hooks-args+=("--init-hooks \"sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh\"")
+  
   distrobox create  \
     --image debian:$VERSION \
     --name $NAME \
@@ -10,16 +13,7 @@ create_distrobox() {
     --home ${HOME}/distroboxes/${NAME} \
     --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
     --additional-packages "$PACKAGES_TO_INSTALL" \
-    --init \
-    --init-hooks $(echo init_hook_ssh)
-}
-
-init_hook_ssh() {
-  if is_ssh_setup; then 
-    echo "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"
-  else
-    echo "echo 'skipping ssh'"
-  fi
+    `if is_ssh_setup; then --init --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"; fi`
 }
 
 enter_distrobox() {
