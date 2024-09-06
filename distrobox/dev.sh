@@ -11,7 +11,15 @@ create_distrobox() {
     --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
     --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
-    --init-hooks "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" 
+    --init-hooks init_hook_ssh 
+}
+
+init_hook_ssh() {
+  if [[ -z $SKIP_SSH ]]; then 
+    echo ""
+  else
+    echo "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"
+  fi
 }
 
 enter_distrobox() {
@@ -19,13 +27,17 @@ enter_distrobox() {
 }
 
 pre_install() {
-  echo "Setup SSH"
-  echo "Current used ports are: "
-  sed -n -e '/^Host /{h;d;}' -e '/^\ *Port /{H;x;s/\n/ /p;}' ~/.ssh/config
-  while
-    read -p "Please enter a port number: " PORT
-    ! echo "$PORT" | grep -qE '^[0-9]+$'
-  do true; done
+  if do_we_continue "Setup SSh"; then 
+    echo "Setup SSH"
+    echo "Current used ports are: "
+    sed -n -e '/^Host /{h;d;}' -e '/^\ *Port /{H;x;s/\n/ /p;}' ~/.ssh/config
+    while
+      read -p "Please enter a port number: " PORT
+      ! echo "$PORT" | grep -qE '^[0-9]+$'
+    do true; done
+  else
+    SKIP_SSH=true
+  fi
 }
 
 post_install() {
