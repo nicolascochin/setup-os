@@ -11,7 +11,7 @@ create_distrobox() {
     --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
     --additional-packages "$PACKAGES_TO_INSTALL" \
     --init \
-    --init-hooks $(is_ssh_setup && echo "sudo sed -i \"s/^#Port 22/Port $PORT/\" /etc/ssh/sshd_config && sudo systemctl enable ssh" || echo "echo 'skipping ssh'")
+    --init-hooks "echo 'skipping ssh'
 }
 
 init_hook_ssh() {
