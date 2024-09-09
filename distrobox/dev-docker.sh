@@ -9,6 +9,7 @@ PACKAGES+=(
 
 create_distrobox() {
   create_args=()
+  create_args+=("--root")
   create_args+=("--image debian:$VERSION")
   create_args+=("--name $NAME")
   create_args+=("--hostname $NAME")
