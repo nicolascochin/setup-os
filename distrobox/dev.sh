@@ -48,7 +48,7 @@ post_install() {
     echo "Config SSH"
     cat <<EOF >> ~/.ssh/config
 Host $NAME
-  User nico
+  User $(whoami)
   Port $PORT
   HostName localhost
 EOF
