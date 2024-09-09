@@ -22,7 +22,7 @@ create_distrobox() {
 }
 
 pre_install() {
-  !do_we_continue "Setup SSh" && SKIP_SSH=true
+  ! do_we_continue "Setup SSh" && SKIP_SSH=true
 }
 
 post_install() {
