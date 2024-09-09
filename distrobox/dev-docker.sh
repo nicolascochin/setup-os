@@ -8,16 +8,21 @@ PACKAGES+=(
 )
 
 create_distrobox() {
-  distrobox create --root \
-    --image debian:$VERSION \
-    --name $NAME \
-    --hostname $NAME \
-    --home ${HOME}/distroboxes/${NAME} \
-    --volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw \
-    --additional-packages "$PACKAGES_TO_INSTALL" \
-    --init \
-    --init-hooks "sudo sed -i \"s/^#Port 22/Port 22/\" /etc/ssh/sshd_config && sudo systemctl enable ssh"  \
-    --unshare-all
+  create_args=()
+  create_args+=("--image debian:$VERSION")
+  create_args+=("--name $NAME")
+  create_args+=("--hostname $NAME")
+  create_args+=("--home ${HOME}/distroboxes/${NAME}")
+  create_args+=("--additional-packages \"$PACKAGES_TO_INSTALL\"")
+  create_args+=("--volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw")
+  is_ssh_setup && create_args+=( "--init --init-hooks \"sudo sed -i \\\"s/^#Port 22/Port 22/\\\" /etc/ssh/sshd_config && sudo systemctl enable ssh\"" ) 
+  create_args+=("--unshare-all")
+
+  echo "distrobox create $(echo "${create_args[@]}")" | bash
+}
+
+pre_install() {
+  !do_we_continue "Setup SSh" && SKIP_SSH=true
 }
 
 post_install() {
@@ -32,13 +37,15 @@ post_install() {
   echo 
   echo "Install Docker" && install_docker
   echo
-  echo "Config SSH"
-  cat <<EOF >> ~/.ssh/config
+  is_ssh_setup && (
+    echo "Config SSH"
+    cat <<EOF >> ~/.ssh/config
 Host $NAME
   User $(whoami)
   Port 22
-  HostName ${NAME}.local
+  HostName ${NAME}.local  
 EOF
+)
   echo
   install_gh_and_ssh
   echo  
