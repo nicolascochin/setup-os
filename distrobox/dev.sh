@@ -10,6 +10,7 @@ create_distrobox() {
   create_args+=("--home ${HOME}/distroboxes/${NAME}")
   create_args+=("--additional-packages \"$PACKAGES_TO_INSTALL\"")
   create_args+=("--volume ${HOME}/Workspace:${HOME}/distroboxes/${NAME}/Workspace:rw")
+  create_args+=("--volume "${HOME}/.ssh:${HOME}/distroboxes/${NAME}/.ssh")  
   is_ssh_setup && create_args+=( "--init --init-hooks \"sudo sed -i \\\"s/^#Port 22/Port $PORT/\\\" /etc/ssh/sshd_config && sudo systemctl enable ssh\"" ) 
 
   echo "distrobox create $(echo "${create_args[@]}")" | bash
