@@ -25,7 +25,17 @@ create_distrobox() {
 }
 
 pre_install() {
-  ! do_we_continue "Setup SSh" && SKIP_SSH=true
+  if do_we_continue "Setup SSh"; then 
+    echo "Setup SSH"
+    echo "Current used ports are: "
+    sed -n -e '/^Host /{h;d;}' -e '/^\ *Port /{H;x;s/\n/ /p;}' ~/.ssh/config
+    while
+      read -p "Please enter a port number: " PORT
+      ! echo "$PORT" | grep -qE '^[0-9]+$'
+    do true; done
+  else
+    SKIP_SSH=true
+  fi
 }
 
 post_install() {
